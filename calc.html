@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Include Tailwind CSS if desired -->
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">-->
+  <title>Protein Intake & BMI Calculator</title>
+  <style>
+    /* Add any custom styles here */
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Protein Intake & BMI Calculator</h1>
+
+    <div class="row">
+      <!-- Protein Intake Calculator -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Protein Intake Calculator
+          </div>
+          <div class="card-body">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" class="form-control mb-2">
+
+            <!-- <label for="proteinFactor">Protein Factor:</label>
+            <input type="number" id="proteinFactor" class="form-control mb-2"> -->
+
+            <button class="btn btn-primary" onclick="calculateProtein()">Calculate Protein Intake</button>
+
+            <h5 class="mt-3">Protein Intake:</h5>
+            <p id="proteinResult"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMI Calculator -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            BMI Calculator
+          </div>
+          <div class="card-body">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" class="form-control mb-2">
+
+            <label for="weightBMI">Weight (kg):</label>
+            <input type="number" id="weightBMI" class="form-control mb-2">
+
+            <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+
+            <h5 class="mt-3">BMI:</h5>
+            <p id="bmiResult"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function calculateProtein() {
+      const weight = parseFloat(document.getElementById('weight').value);
+    //   const proteinFactor = parseFloat(document.getElementById('proteinFactor').value);
+
+      if (!isNaN(weight)) {
+                const proteinIntake = weight * 2;
+        document.getElementById('proteinResult').innerText = `Protein Intake: ${proteinIntake.toFixed(2)} grams`;
+      } else {
+        document.getElementById('proteinResult').innerText = 'Invalid input';
+      }
+    }
+
+   function calculateBMI() {
+  const height = parseFloat(document.getElementById('height').value);
+  const weightBMI = parseFloat(document.getElementById('weightBMI').value);
+
+  if (!isNaN(height) && !isNaN(weightBMI)) {
+    const bmi = weightBMI / ((height / 100) ** 2);
+    const bmiCategory = getBMICategory(bmi);
+    
+    document.getElementById('bmiResult').innerText = `BMI: ${bmi.toFixed(2)} - ${bmiCategory}`;
+  } else {
+    document.getElementById('bmiResult').innerText = 'Invalid input';
+  }
+}
+
+// Function to categorize BMI
+function getBMICategory(bmi) {
+  if (bmi < 18.5) {
+    return 'Underweight';
+  } else if (bmi >= 18.5 && bmi < 25) {
+    return 'Normal Weight';
+  } else if (bmi >= 25 && bmi < 30) {
+    return 'Overweight';
+  } else {
+    return 'Obese';
+  }
+}
+
+  </script>
+</body>
+</html>

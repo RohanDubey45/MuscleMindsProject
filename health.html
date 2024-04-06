@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #008772;
+            padding: 3px;
+            text-align: center;
+            color: white;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        .calculator-container, .images-section {
+            margin-top: 20px;
+        }
+
+        #result, #bmi-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .image-card {
+            position: relative;
+            margin: 10px;
+            overflow: hidden;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+        }
+
+        .image-card img {
+            width: 400px;
+            height: 250px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            border-radius: 15px;
+        }
+
+        .image-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-overlay p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Health Benefits and Calculators</h1>
+    </header>
+
+    <section class="container">
+        <h2>Health Benefits</h2>
+        <p>"Fuel your body with positivity and motion. Every small step towards health is a 
+            giant leap towards happiness. You've got this – embrace the journey to a 
+            healthier, happier you!"</p>
+            <h4>Transform Your Health Today!</h4>
+        <p>Empower your journey to wellness by providing essential health information. Your details will be the key to unlocking a healthier and happier version of yourself. Take the first step toward a better you!</p>
+        <a href="UserHealth_Info.html" class="btn btn-primary">Fill Your Health Form Now</a>
+
+    </section>
+
+    <section class="container">
+        <h2>Healthy Lifestyle</h2>
+
+        <div class="images-section row">
+            <div class="col-md-4">
+               <ul> <h5>Drinking 3L Water Perday</h5></ul>
+                <div class="card image-card">
+                    <img src="nutrition/water.jpg" alt="Drink Water" class="card-img-top">
+                    <div class="card-overlay">
+                        <p>Stay hydrated by drinking at least 3 liters of water a day.</p>
+                    </div>
+                </div>
+                <ul style="list-style:disc;">
+                    <li><span style="font-weight: bold;">Hydration: </span>Ensures proper hydration, supporting bodily functions</li><br>
+                    <li><span style="font-weight: bold;">Joint Health:</span> Lubricates joints and helps prevent stiffness.</li><br>
+                    <li><span style="font-weight: bold;">Kidney Function: </span>Supports optimal kidney performance.</li>
+                   </ul>
+            </div>
+
+            <div class="col-md-4">
+                <ul> <h5>Excersing Daily</h5></ul>
+                <div class="card image-card">
+                    <img src="nutrition/excersice.jpg" alt="Exercise Regularly" class="card-img-top">
+                    <div class="card-overlay">
+                        <p>Regular exercise helps maintain a healthy lifestyle.</p>
+                    </div>
+                </div>
+                <ul style="list-style:disc;">
+                    <li><span style="font-weight: bold;">Cardiovascular Health:</span>Strengthens the heart and improves circulation.</li><br>
+                    <li><span style="font-weight: bold;">Muscle Strength:</span> Builds and tones muscles for enhanced strength.</li><br>
+                    <li><span style="font-weight: bold;">Stress Reduction:</span> Reduces stress and anxiety levels.</li>
+                   </ul>
+            </div>
+
+            <div class="col-md-4">
+                <ul> <h5>Having a Balanced Diet</h5></ul>
+                <div class="card image-card">
+                    <img src="nutrition/diet.jpg" alt="Healthy Diet" class="card-img-top">
+                    <div class="card-overlay">
+                        <p>Eat a balanced and green diet for overall well-being.</p>
+                    </div>
+                </div>
+                <ul style="list-style:disc;">
+                    <li><span style="font-weight:bold;">Weight Management: </span>healthy weight and metabolism.</li><br>
+                    <li><span style="font-weight:bold;">Energy Levels: </span>Sustains consistent energy levels throughout the day.</li><br>
+                    <li><span style="font-weight:bold;">Immune System Support: </span>Boosts immunity to fight illnesses.</li>
+                   </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>BMI Calculator</h2>
+        <p>BMI assesses body fat through height and weight, categorizing individuals into underweight, 
+            normal weight, overweight, or obese, offering insight into health risks.</p>
+
+        <div class="calculator-container row">
+            <div class="col-md-4">
+                <label for="height">Enter Your Height (in cm):</label>
+                <input type="number" id="height" class="form-control" min="1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="weight">Enter Your Weight (in kg):</label>
+                <input type="number" id="weight" class="form-control" min="1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="bmi-result">BMI:</label>
+                <span id="bmi-result" class="form-control"></span>
+                <p id="bmi-category" class="mt-2"></p>
+            </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+    </section>
+
+    <section class="container">
+        <h2>Protein Intake Calculator</h2>
+        <p>The Protein Intake Calculator customizes daily protein goals for muscle gain, weight loss,
+             or balanced nutrition, aiding in personalized dietary plans for improved health and fitness.</p>
+
+        <div class="calculator-container row">
+            <div class="col-md-4">
+                <label for="goal">Select Your Goal:</label>
+                <select id="goal" class="form-control">
+                    <option value="muscle-gain">Muscle Gain</option>
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="balanced">Balanced</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="weight">Enter Your Weight (in kg):</label>
+                <input type="number" id="weight" class="form-control" min="1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="result">Protein Intake:</label>
+                <span id="result" class="form-control">0g</span>
+            </div>
+        </div>
+
+        <button class="btn btn-success" onclick="calculateProtein()">Calculate Protein</button>
+    </section>
+
+    <!-- Bootstrap JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+
+            const bmi = weight / ((height / 100) ** 2);
+            const bmiResult = bmi.toFixed(2);
+            document.getElementById('bmi-result').textContent = bmiResult;
+
+            let bmiCategory;
+
+            if (bmi < 18.5) {
+                bmiCategory = 'Underweight';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiCategory = 'Normal Weight';
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiCategory = 'Overweight';
+            } else {
+                bmiCategory = 'Obese';
+            }
+
+            document.getElementById('bmi-category').textContent = `BMI Category: ${bmiCategory}`;
+        }
+
+        function calculateProtein() {
+            const goal = document.getElementById('goal').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+
+            let proteinMultiplier;
+
+            switch (goal) {
+                case 'muscle-gain':
+                    proteinMultiplier = 2.2;
+                    break;
+                case 'weight-loss':
+                    proteinMultiplier = 1.8;
+                    break;
+                case 'balanced':
+                    proteinMultiplier = 2.0;
+                    break;
+                default:
+                    proteinMultiplier = 0;
+            }
+
+            const proteinIntake = weight * proteinMultiplier;
+            document.getElementById('result').textContent = proteinIntake.toFixed(2) + 'g';
+        }
+    </script>
+
+</body>
+</html>
