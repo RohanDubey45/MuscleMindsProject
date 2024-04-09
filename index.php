@@ -2,11 +2,8 @@
 // Start the session
 session_start();
 
-// Check if the user is not logged in
 if (!isset($_SESSION['user_authenticated'])) {
-    // Redirect to the login page
     header("Location: MMlogin.html");
-    exit(); // Make sure to exit to prevent further execution
 }
 ?>
 <!DOCTYPE html>
